@@ -1,15 +1,15 @@
 <mat-sidenav-container class="app-sidenav-container" autosize>
-    <mat-sidenav #sidenav class="app-sidenav mat-elevation-z10 circular-edge" 
+    <mat-sidenav *ngIf="isUserLoggedIn" #sidenav class="app-sidenav mat-elevation-z10 circular-edge" 
         [opened]='!isSmallScreen'
         [mode]="isSmallScreen? 'over' : 'side' ">
         <mat-toolbar color="primary">
             <span>Menu Items</span>
         </mat-toolbar>
 
-            <button mat-button class="menu-button" [routerLink]="['/home']">
-                <mat-icon>home</mat-icon>
-                <span>Home</span>
-            </button>
+          <button mat-button class="menu-button" [routerLink]="['/home']">
+              <mat-icon>home</mat-icon>
+              <span>Home</span>
+          </button>
 
           <button mat-button class="menu-button" [routerLink]="['/dashboard']">
             <mat-icon>dashboard</mat-icon>
@@ -41,7 +41,11 @@
     </mat-sidenav>
   
     <div class="app-sidenav-content">
-        <app-toolbar (toggleSidenav)="sidenav.toggle()" >
+        <!-- <app-toolbar *ngIf="isUserLoggedIn" (toggleSidenav)="sidenav.toggle()" >
+        </app-toolbar>
+        <app-toolbar *ngIf="!isUserLoggedIn">
+        </app-toolbar>         -->
+        <app-toolbar  (toggleSidenav)="sidenav.toggle()" >
         </app-toolbar>
         
         <div class="main-content mat-elevation-z4">

@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -17,6 +17,7 @@ export class SidenavComponent implements OnInit {
   users: User[] =[];
   user: User = new User();
   isUserLoggedIn: boolean = false;
+  @ViewChild('sidenav') sidenav: any;
 
   constructor( private breakpointObserver: BreakpointObserver,
     private authService: AuthService) { }
@@ -51,9 +52,12 @@ export class SidenavComponent implements OnInit {
      )
 
      this.authService.user.subscribe(( x: User)=>{
-        console.log('user email : ' + x.email);
+        console.log('Side nav component  user email : ' + x.email);
+        console.log('Side nav component isUserLoggedIn : ' + this.isUserLoggedIn);
         if( x.email){
           this.isUserLoggedIn = true;
+        }else{
+          this.isUserLoggedIn = false;
         }
       })
 

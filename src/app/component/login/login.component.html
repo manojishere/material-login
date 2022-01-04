@@ -1,0 +1,79 @@
+<div class="flex-container">    
+<mat-card>
+    <mat-error class="errStyle" *ngIf="loginInvalid">
+        {{message}}
+    </mat-error> 
+    <mat-card-header>
+        <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            
+            
+
+            
+            <div toastContainer>
+            </div>
+            <!--
+            <div *ngIf="loginInvalid" class="row container-fluid"  id="divshow" >
+                {{message}}
+            </div>
+            -->
+         
+          
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="User Name" formControlName="userName" #userNameInput/>
+                <mat-hint>Mini character 8: {{ userNameInput.value.length }}/8</mat-hint>
+                <mat-error *ngIf="form?.get('userName')?.hasError('required')">User Name is required</mat-error>
+                <mat-error *ngIf="form?.get('userName')?.hasError('maxlength')">You have more than 16 characters.</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Password" formControlName="password" required>
+            </mat-form-field>
+        
+            <button mat-raised-button color="primary" [disabled]="!form.valid">Log in</button>
+            
+            <!--
+            <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput>
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Long Last Name That Will Be Truncated</mat-label>
+                <input matInput>
+            </mat-form-field></td>
+            </tr></table>
+        
+            <p>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address 2</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+            </p>
+        
+            <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Ex. San Francisco">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="Ex. California">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Postal Code</mat-label>
+                <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field></td>
+            </tr></table>
+            -->
+        </form>
+    </mat-card-content>
+</mat-card>
+</div>

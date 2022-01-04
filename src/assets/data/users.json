@@ -1,0 +1,5 @@
+[
+    {"id": 1,"userName":"manojishere","password":"admin","firstName":"Manoj","lastName":"Singh", "dateOfBirth":"2012-10-23","token": "","email": "manojishere@gmail.com", "role": "Admin"},
+    {"id": 2,"userName":"tellneetu","password":"admin","firstName":"Neetu","lastName":"Singh","dateOfBirth":"2012-10-23","token": "","email": "manojishere@gmail.com", "role": "Author"},
+    {"id": 3,"userName":"tellsanskriti","password":"admin","firstName":"Sanskriti","lastName":"Singh","dateOfBirth":"2012-10-23", "token": "","email": "manojishere@gmail.com", "role": "Admin"}
+  ]

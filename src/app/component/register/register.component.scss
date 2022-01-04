@@ -1,0 +1,27 @@
+.flex-container{
+    /*height: calc(100vh - 98px);*/
+    margin: 16px;
+    justify-content: center;
+    align-items: center;
+    display: flex; 
+      
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+  
+.example-full-width {
+    width: 100%;
+}
+
+.red-snackbar{
+    background-color: rgb(153, 50, 50);
+    color:lightgoldenrodyellow;
+}
+
+.mat-snack-bar-container {
+    max-width: 900px;
+ }

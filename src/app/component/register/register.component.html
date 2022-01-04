@@ -1,0 +1,111 @@
+<div class="flex-container">
+
+  <ng-template #firstDialog>
+    <h2 matDialogTitle>Hello, world!</h2>
+    <p matDialogContent><em>Content for this dialog goes here...</em></p>
+    <mat-dialog-actions align="end">
+       <button mat-button matDialogClose>Dismiss</button>
+    </mat-dialog-actions>
+  </ng-template>
+
+  <ng-template #secondDialog>
+    <h2 matDialogTitle>Hello, second dialog!</h2>
+    <p matDialogContent>Interesting note: This template reference was referenced in code with the <code>@ViewChild</code>, which lets you query components/template references in the component view.</p>
+    <mat-dialog-actions align="end">
+      <button mat-button matDialogClose>Dismiss</button>
+    </mat-dialog-actions>
+  </ng-template> 
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="User Name" formControlName="userName" #userNameInput/>
+          <mat-hint>Min characters 8 : {{userNameInput.value.length}}/8</mat-hint>
+          <mat-error *ngIf="form?.get('userName')?.hasError('required')">User Name is required</mat-error>
+          <mat-error *ngIf="form?.get('userName')?.hasError('maxlength')">You have more than 10 characters.</mat-error>            
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="First Name" formControlName="firstName">
+          <mat-error *ngIf="form?.get('firstName')?.hasError('required')"></mat-error>
+        </mat-form-field>   
+        
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+        
+        <mat-form-field>
+          <input matInput [min]="minDate" [max]="maxDate" 
+            [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" 
+            readonly (click)="picker.open()">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form?.get('dateOfBirth')?.hasError('required')">Please select valid date</mat-error>
+        </mat-form-field>          
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex. pat@example.com" formControlName="email">
+          
+          <mat-error *ngIf="form?.get('email')?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="form?.get('email')?.hasError('email')">Please enter a valid email address</mat-error>            
+
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <!-- <mat-error *ngIf="form?.get('matching_passwords.password')?.touched">It is touched</mat-error> -->
+          <mat-error *ngIf="form?.get('password')?.hasError('required')">Please enter valid password</mat-error>
+          <!-- <mat-error *ngIf="form?.get('matching_passwords')?.get('password')?.hasError('required')">Please enter valid password</mat-error> -->
+          <mat-error *ngIf="form?.get('password')?.hasError('minlength')">Please lenght cannot be less than 8 characters</mat-error>
+          <mat-error *ngIf="form?.get('password')?.hasError('maxlength')">Please lenght cannot be greater than 16 characters</mat-error>
+          <!-- <mat-error class="error-message" *ngIf="form?.get('password')?.touched">It is touched required</mat-error> --> 
+          <!-- <mat-error class="error-message" *ngIf="form?.get('matching_passwords').get('password').hasError(validation.type) && (accountDetailsForm.get('matching_passwords').get('password').dirty || accountDetailsForm.get('matching_passwords').get('password').touched)">{{validation.message}}</mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+          <mat-error *ngIf="form?.get('confirmPassword')?.hasError('mustMatch')">Password doesn't match</mat-error>
+        </mat-form-field>
+          
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choose a role...</mat-label>
+          <mat-select formControlName="role">
+            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="primary" [disabled]="!form.valid">Register</button>
+      <!--
+      <button mat-button (click)="openDialogWithRef(firstDialog)">Open dialog with reference</button>
+      <button mat-button (click)="openOtherDialog()">Open dialog in code</button>
+      -->
+
+    </form>
+
+    <mat-card-footer>
+      <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item><span style="padding: 10px 0px;font-size: 14px;font-weight: 500">Already have account ?</span>
+          <a mat-button style="color: #0f9d58;" [routerLink]="['/login']">Log in</a>
+        </mat-list-item>
+      </mat-list>
+      <!--
+      <br> Value : {{form.value | json }}
+      -->
+
+    </mat-card-footer>
+    
+    
+  </mat-card>
+
+</div>
